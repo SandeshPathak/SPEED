@@ -35,4 +35,10 @@ router.get('/', (req, res) => {
       .catch((err) => res.status(400).json({ error: "Unable to find this user" }));
   });
 
+  router.post('/SearchArticle', (req, res) => {
+    Article.find(req.body)
+      .then((data) => res.json(data))
+      .catch((err) => res.status(400).json({ error: "Database error!" }))
+  })
+
   module.exports = router;
